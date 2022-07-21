@@ -1,2 +1,4 @@
 # KQL_Templates
-KQL Search templates
+A quick repository to create some template searches for KQL in windows Defender for Endpoint.
+
+1. URL Click Events
