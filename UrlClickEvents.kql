@@ -1,0 +1,13 @@
+// This query finds URL Click events
+// From https://github.com/angry-bender/KQL_Templates
+let partialRemoteUrlToDetect = "example.com"; // Change this to a URL you'd like to find machines connecting to
+let PartialUserToDetect = "jblog"; // Change this to a user you'd like to search for
+let NetworkMessageID = "<message id from email>"; // Message ID to search for (Available in O365 email message deteail under Email & Collaboration => Explorer)
+let StartDate = datetime(2022-01-01); //YYYY-MM-DD Start range
+let FinishDate = datetime(2022-01-01); //YYYY-MM-DD End Range
+UrlClickEvents  
+// now select a search from the below by uncommenting
+// | where NetworkMessageId has NetworkMessageID
+// | where Url has partialRemoteUrlToDetect
+| where Timestamp > StartDate and Timestamp <= FinishDate
+// | where AccountUpn has PartialUserToDetect
