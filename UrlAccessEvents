@@ -1,0 +1,12 @@
+// This query finds URL events from an endpoint
+// from https://github.com/angry-bender/KQL_Templates
+let partialRemoteUrlToDetect = "example.com"; // Change this to a URL you'd like to find machines connecting to
+let PartialDeviceToDetect = "computername"; // Change this to a user you'd like to search for
+let StartDate = datetime(2022-01-01); //YYYY-MM-DD Start range
+let FinishDate = datetime(2022-01-01); //YYYY-MM-DD End Range
+DeviceNetworkEvents 
+|project Timestamp, DeviceName, RemoteIP, RemoteUrl
+// now select a search from the below by uncommenting
+// | where Url has partialRemoteUrlToDetect
+// where Timestamp > StartDate and Timestamp <= FinishDate
+// | where DeviceName has PartialDeviceToDetect
