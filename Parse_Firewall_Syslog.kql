@@ -1,0 +1,10 @@
+// Parse Common Firewall Syslogs in a query (Credit to - https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/Sophos%20XG%20Firewall/Parsers/SophosXGFirewall.txt)
+Table
+|extend Src_IP = extract(@'src=\"?([\w\.]+)\"?', 1, Message)
+|extend Dst_IP = extract(@'dst=\"?([\w\.]+)\"?', 1, Message)
+|extend NAT_Translate_Src_IP = extract(@'translated_src_ip=\"?([\w\.]+)\"?', 1, Message)
+|extend NAT_Translate_Dst_IP = extract(@'translated_dst_ip=\"?([\w\.]+)\"?', 1, Message)
+|extend Dst_Port = extract(@'dport=\"?(\d+)\"?', 1, Message)
+|extend Src_Port = extract(@'sport=\"?(\d+)\"?', 1, Message)
+|extend NAT_Translate_Port = extract(@'translated_port=\"?(\d+)\"?', 1, Message)
+|extend Protocol = extract(@'protocol=\"?(\w+)\"?', 1, Message)
