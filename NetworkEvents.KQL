@@ -1,0 +1,6 @@
+// This query can be used to perfom statistical analysis on the Device Network Events Table for a given target IP
+let TargetIP = "192.168.1.1"
+DeviceNetworkEvents
+| project TimeGenerated, ActionType, DeviceName, InitiatingProcessAccountName, InitiatingProcessFileName,InitiatingProcessCommandLine, LocalIP, LocalPort, RemoteIP, RemotePort
+| where RemoteIP has TargetIP and ActionType contains "Success" and RemotePort in ("80", "443", "22")
+| summarize by RemotePort, InitiatingProcessFileName, InitiatingProcessCommandLine
